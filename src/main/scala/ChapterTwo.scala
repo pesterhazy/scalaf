@@ -30,6 +30,19 @@ object ChapterTwo {
     else go(2, fib(0), fib(1))
   }
 
+  def isSorted[A](a: Array[A], lessThanOrEqual: (A, A) => Boolean): Boolean = {
+    @annotation.tailrec
+    def go(idx: Int): Boolean = {
+      if (idx >= a.length) true
+      else if (idx == 0)
+        go(idx + 1)
+      else if (lessThanOrEqual(a(idx-1), a(idx)))
+        go(idx + 1)
+      else false
+    }
+    go(0)
+  }
+
   // def main(args: Array[String]) {
   //   println("Hello World!!!")
   // }
